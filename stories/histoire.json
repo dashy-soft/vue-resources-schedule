@@ -1,0 +1,71 @@
+{
+  "stories": [
+    {
+      "id": "stories-toolbar-story-vue",
+      "title": "Toolbar",
+      "layout": {
+        "type": "single",
+        "iframe": true
+      },
+      "docsOnly": false,
+      "variants": [
+        {
+          "id": "_default",
+          "title": "default"
+        }
+      ],
+      "relativePath": "stories/Toolbar.story.vue",
+      "supportPluginId": "vue3",
+      "treePath": [
+        "Toolbar"
+      ],
+      "virtual": false,
+      "markdownFile": null
+    },
+    {
+      "id": "stories-basic-story-vue",
+      "title": "Simple",
+      "layout": {
+        "type": "single",
+        "iframe": true
+      },
+      "docsOnly": false,
+      "variants": [
+        {
+          "id": "_default",
+          "title": "default"
+        }
+      ],
+      "relativePath": "stories/basic.story.vue",
+      "supportPluginId": "vue3",
+      "treePath": [
+        "Simple"
+      ],
+      "virtual": false,
+      "markdownFile": null
+    },
+    {
+      "id": "stories-chunkstyles-story-vue",
+      "title": "Chunk styles",
+      "layout": {
+        "type": "single",
+        "iframe": true
+      },
+      "docsOnly": false,
+      "variants": [
+        {
+          "id": "_default",
+          "title": "default"
+        }
+      ],
+      "relativePath": "stories/chunkStyles.story.vue",
+      "supportPluginId": "vue3",
+      "treePath": [
+        "Chunk styles"
+      ],
+      "virtual": false,
+      "markdownFile": null
+    }
+  ],
+  "markdownFiles": []
+}
