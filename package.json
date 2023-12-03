@@ -1,5 +1,5 @@
 {
-  "name": "vue-ressources-schedule",
+  "name": "@dashy-soft/vue-resources-schedule",
   "description": "",
   "version": "0.0.1-development",
   "license": "commercial",
@@ -10,12 +10,12 @@
   "author": "Gwenael Pluchon (Dashy-soft)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gwenaelp/vue-ressources-schedule.git"
+    "url": "https://github.com/dashy-soft/vue-resources-schedule.git"
   },
   "bugs": {
-    "url": "https://github.com/gwenaelp/vue-ressources-schedule/issues"
+    "url": "https://github.com/dashy-soft/vue-resources-schedule/issues"
   },
-  "homepage": "https://github.com/gwenaelp/vue-ressources-schedule#readme",
+  "homepage": "https://github.com/dashy-soft/vue-resources-schedule#readme",
   "keywords": [
     "vue",
     "vue-component",
@@ -24,6 +24,9 @@
   "engines": {
     "node": ">=8.9.0"
   },
+  "examples": [
+    "images/example1.png"
+  ],
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "story:dev": "histoire dev",
