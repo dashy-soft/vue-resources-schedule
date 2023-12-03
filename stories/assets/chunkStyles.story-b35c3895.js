@@ -1,6 +1,15 @@
-import { _ as _export_sfc, T as Timeline, a as TimelineLineRendererDaysSeparator, b as TimelineLineRendererTimeChunks } from "./TimelineLineRendererTimeChunks-d0a9c175.js";
+import { _ as _export_sfc, T as Timeline, a as TimelineLineRendererDaysSeparator, b as TimelineLineRendererTimeChunks } from "./TimelineLineRendererTimeChunks-5392991a.js";
 import { aq as resolveComponent, ar as openBlock, as as createBlock, at as withCtx, au as createVNode, av as createBaseVNode, az as toDisplayString, aw as createTextVNode } from "./vendor-7a101243.js";
-const basic_story_vue_vue_type_style_index_0_scoped_9f14ffff_lang = "";
+const chunkStyles_story_vue_vue_type_style_index_0_scoped_e95bb102_lang = "";
+function stringToColor(str, colorArray) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const index = Math.abs(hash) % colorArray.length;
+  return colorArray[index];
+}
+const colors = ["#FF5733", "#3399FF", "#33FF42", "#FF33A4", "#33FF99"];
 const _sfc_main = {
   components: {
     Timeline,
@@ -31,6 +40,12 @@ const _sfc_main = {
         end: "2023-09-07 19:30"
       }]
     };
+  },
+  methods: {
+    getChunkStyle(chunk) {
+      const color = stringToColor(chunk.category, colors);
+      return `background: ${color}50; border: 1px solid ${color}`;
+    }
   }
 };
 const _hoisted_1 = { style: { "padding-left": "10px", "padding-right": "10px" } };
@@ -39,7 +54,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_TimelineLineRendererTimeChunks = resolveComponent("TimelineLineRendererTimeChunks");
   const _component_Timeline = resolveComponent("Timeline");
   const _component_Story = resolveComponent("Story");
-  return openBlock(), createBlock(_component_Story, { title: "Simple" }, {
+  return openBlock(), createBlock(_component_Story, { title: "Chunk styles" }, {
     default: withCtx(() => [
       createVNode(_component_Timeline, {
         data: $data.data,
@@ -62,14 +77,15 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           createVNode(_component_TimelineLineRendererTimeChunks, {
             "item-props": props,
             startDateKey: "start",
-            endDateKey: "end"
+            endDateKey: "end",
+            chunkStyle: $options.getChunkStyle
           }, {
             tooltip: withCtx(({ chunk }) => [
               createTextVNode(" tooltip ")
             ]),
             _: 2
             /* DYNAMIC */
-          }, 1032, ["item-props"])
+          }, 1032, ["item-props", "chunkStyle"])
         ]),
         _: 1
         /* STABLE */
@@ -79,8 +95,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   });
 }
-_sfc_main.__file = "stories/basic.story.vue";
-const basic_story = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9f14ffff"], ["__file", "/home/runner/work/vue-ressources-schedule/vue-ressources-schedule/stories/basic.story.vue"]]);
+_sfc_main.__file = "stories/chunkStyles.story.vue";
+const chunkStyles_story = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-e95bb102"], ["__file", "/home/runner/work/vue-resources-schedule/vue-resources-schedule/stories/chunkStyles.story.vue"]]);
 export {
-  basic_story as default
+  chunkStyles_story as default
 };
