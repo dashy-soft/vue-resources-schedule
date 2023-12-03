@@ -67,6 +67,10 @@ export default {
       type: Function,
       default: undefined,
     },
+    aggregateFunction: {
+      type: Function,
+      default: undefined,
+    },
     lineHeight: {
       type: Number,
       default: undefined,
@@ -78,7 +82,15 @@ export default {
     endDate: {
       type: String,
       default: undefined,
-    }
+    },
+    startDateKey: {
+      type: String,
+      default: 'start',
+    },
+    endDateKey: {
+      type: String,
+      default: 'end',
+    },
   },
   components: {
     TimelineRuler,
@@ -103,18 +115,45 @@ export default {
   watch: {
     startDate (v) {
       this.displayedStartDate = this.startDate ? dayjs(this.startDate) : dayjs().startOf('month');
+      if (this.endDate <= v) {
+        this.$emit('update:end-date', dayjs(v).add(1, 'day').format('YYYY-MM-DD HH:mm:ss'));
+      }
     },
     endDate (v) {
       this.displayedEndDate = this.endDate ? dayjs(this.endDate) : dayjs().endOf('month');
+      if (this.startDate >= v) {
+        this.$emit('update:start-date', dayjs(v).subtract(1, 'day').format('YYYY-MM-DD HH:mm:ss'));
+      }
     },
   },
   computed: {
     displayedItems () {
-      if (this.groupByFunction) {
-        const groupedDict = groupBy(this.data, this.groupByFunction);
-        return Object.keys(groupedDict).map(key => ({ key, items: groupedDict[key], _grouped: true }));
+      let itemsInInterval = this.data;
+      if(this.startDateKey && this.endDateKey) {
+        const start = dayjs(this.startDate).format('YYYY-MM-DD');
+        const end = dayjs(this.endDate).format('YYYY-MM-DD');
+        itemsInInterval = itemsInInterval.filter(i => {
+          console.log('filter', start, i[this.startDateKey], end, i[this.endDateKey])
+          if (start <= i[this.startDateKey] && end >= i[this.endDateKey]) {
+            return true;
+          }
+          return false;
+        });
       }
-      return this.data;
+      if (this.groupByFunction) {
+        const groupedDict = groupBy(itemsInInterval, this.groupByFunction);
+        return Object.keys(groupedDict).map(key => {
+          if (this.aggregateFunction) {
+            const res = groupedDict[key].reduce(this.aggregateFunction, {});
+            res._grouped = true;
+            res.items = groupedDict[key];
+            return res;
+          } else {
+            return { key, items: groupedDict[key], _grouped: true };
+          }
+        });
+      }
+      return itemsInInterval;
     },
     currentMonth() {
       return dayjs(this.currentDate).month();

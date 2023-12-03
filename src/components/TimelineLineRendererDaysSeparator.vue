@@ -27,8 +27,6 @@ export default {
       const displayedStartDate = dayjs(this.itemProps.displayedStartDate);
       const displayedEndDate = dayjs(this.itemProps.displayedEndDate);
 
-      console.log('onResize!', canvas.clientWidth)
-
       const canvasWidth = canvas.clientWidth;
       const canvasHeight = canvas.clientHeight;
 
