@@ -1,4 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
-  devtools: { enabled: true }
-})
+export default {
+  modules: [
+    'nuxt-quickdoc',
+  ],
+  target: 'static',
+  ssr: false,
+};
