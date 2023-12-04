@@ -1,55 +1,63 @@
-import { Q as defineAsyncComponent, R as createRouter, S as createWebHistory, U as createWebHashHistory, V as useDark, W as useToggle, k as watch, X as markRaw, E as reactive, d as defineComponent, r as ref, Y as watchEffect, o as openBlock, q as createBlock, Z as mergeProps, _ as resolveDynamicComponent, h as createCommentVNode } from "./vendor-7a101243.js";
+import { Q as defineAsyncComponent, R as createRouter, S as createWebHistory, U as createWebHashHistory, V as useDark, W as useToggle, k as watch, X as markRaw, E as reactive, d as defineComponent, r as ref, Y as watchEffect, o as openBlock, q as createBlock, Z as mergeProps, _ as resolveDynamicComponent, h as createCommentVNode } from "./vendor-vf2cpMkn.js";
 const scriptRel = "modulepreload";
 const assetsURL = function(dep, importerUrl) {
   return new URL(dep, importerUrl).href;
 };
 const seen = {};
 const __vitePreload = function preload(baseModule, deps, importerUrl) {
-  if (!deps || deps.length === 0) {
-    return baseModule();
-  }
-  const links = document.getElementsByTagName("link");
-  return Promise.all(deps.map((dep) => {
-    dep = assetsURL(dep, importerUrl);
-    if (dep in seen)
-      return;
-    seen[dep] = true;
-    const isCss = dep.endsWith(".css");
-    const cssSelector = isCss ? '[rel="stylesheet"]' : "";
-    const isBaseRelative = !!importerUrl;
-    if (isBaseRelative) {
-      for (let i = links.length - 1; i >= 0; i--) {
-        const link2 = links[i];
-        if (link2.href === dep && (!isCss || link2.rel === "stylesheet")) {
-          return;
+  let promise = Promise.resolve();
+  if (deps && deps.length > 0) {
+    const links = document.getElementsByTagName("link");
+    promise = Promise.all(deps.map((dep) => {
+      dep = assetsURL(dep, importerUrl);
+      if (dep in seen)
+        return;
+      seen[dep] = true;
+      const isCss = dep.endsWith(".css");
+      const cssSelector = isCss ? '[rel="stylesheet"]' : "";
+      const isBaseRelative = !!importerUrl;
+      if (isBaseRelative) {
+        for (let i = links.length - 1; i >= 0; i--) {
+          const link2 = links[i];
+          if (link2.href === dep && (!isCss || link2.rel === "stylesheet")) {
+            return;
+          }
         }
+      } else if (document.querySelector(`link[href="${dep}"]${cssSelector}`)) {
+        return;
       }
-    } else if (document.querySelector(`link[href="${dep}"]${cssSelector}`)) {
-      return;
+      const link = document.createElement("link");
+      link.rel = isCss ? "stylesheet" : scriptRel;
+      if (!isCss) {
+        link.as = "script";
+        link.crossOrigin = "";
+      }
+      link.href = dep;
+      document.head.appendChild(link);
+      if (isCss) {
+        return new Promise((res, rej) => {
+          link.addEventListener("load", res);
+          link.addEventListener("error", () => rej(new Error(`Unable to preload CSS for ${dep}`)));
+        });
+      }
+    }));
+  }
+  return promise.then(() => baseModule()).catch((err) => {
+    const e = new Event("vite:preloadError", { cancelable: true });
+    e.payload = err;
+    window.dispatchEvent(e);
+    if (!e.defaultPrevented) {
+      throw err;
     }
-    const link = document.createElement("link");
-    link.rel = isCss ? "stylesheet" : scriptRel;
-    if (!isCss) {
-      link.as = "script";
-      link.crossOrigin = "";
-    }
-    link.href = dep;
-    document.head.appendChild(link);
-    if (isCss) {
-      return new Promise((res, rej) => {
-        link.addEventListener("load", res);
-        link.addEventListener("error", () => rej(new Error(`Unable to preload CSS for ${dep}`)));
-      });
-    }
-  })).then(() => baseModule());
+  });
 };
-const Comp0 = defineAsyncComponent(() => __vitePreload(() => import("./Toolbar.story-341682b1.js"), true ? ["./Toolbar.story-341682b1.js","./TimelineLineRendererTimeChunks-5392991a.js","./vendor-7a101243.js"] : void 0, import.meta.url));
-const Comp1 = defineAsyncComponent(() => __vitePreload(() => import("./basic.story-3373895a.js"), true ? ["./basic.story-3373895a.js","./TimelineLineRendererTimeChunks-5392991a.js","./vendor-7a101243.js"] : void 0, import.meta.url));
-const Comp2 = defineAsyncComponent(() => __vitePreload(() => import("./chunkStyles.story-b35c3895.js"), true ? ["./chunkStyles.story-b35c3895.js","./TimelineLineRendererTimeChunks-5392991a.js","./vendor-7a101243.js"] : void 0, import.meta.url));
+const Comp0 = defineAsyncComponent(() => __vitePreload(() => import("./Toolbar.story-gTO3Ue1K.js"), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url));
+const Comp1 = defineAsyncComponent(() => __vitePreload(() => import("./basic.story-BDmJxtAO.js"), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url));
+const Comp2 = defineAsyncComponent(() => __vitePreload(() => import("./chunkStyles.story-h5SElC4z.js"), true ? __vite__mapDeps([4,1,2]) : void 0, import.meta.url));
 let files = [
-  { "id": "stories-toolbar-story-vue", "path": ["Toolbar"], "filePath": "stories/Toolbar.story.vue", "story": { "id": "stories-toolbar-story-vue", "title": "Toolbar", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "_default", "title": "default" }] }, "supportPluginId": "vue3", "index": 0, component: Comp0, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_stories-toolbar-story-vue-138b93e0.js"), true ? [] : void 0, import.meta.url) },
-  { "id": "stories-basic-story-vue", "path": ["Simple"], "filePath": "stories/basic.story.vue", "story": { "id": "stories-basic-story-vue", "title": "Simple", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "_default", "title": "default" }] }, "supportPluginId": "vue3", "index": 1, component: Comp1, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_stories-basic-story-vue-0f6af1e5.js"), true ? [] : void 0, import.meta.url) },
-  { "id": "stories-chunkstyles-story-vue", "path": ["Chunk styles"], "filePath": "stories/chunkStyles.story.vue", "story": { "id": "stories-chunkstyles-story-vue", "title": "Chunk styles", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "_default", "title": "default" }] }, "supportPluginId": "vue3", "index": 2, component: Comp2, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_stories-chunkstyles-story-vue-904cce39.js"), true ? [] : void 0, import.meta.url) }
+  { "id": "stories-toolbar-story-vue", "path": ["Toolbar"], "filePath": "stories/Toolbar.story.vue", "story": { "id": "stories-toolbar-story-vue", "title": "Toolbar", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "_default", "title": "default" }] }, "supportPluginId": "vue3", "index": 0, component: Comp0, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_stories-toolbar-story-vue-X-WI9tYE.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url) },
+  { "id": "stories-basic-story-vue", "path": ["Simple"], "filePath": "stories/basic.story.vue", "story": { "id": "stories-basic-story-vue", "title": "Simple", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "_default", "title": "default" }] }, "supportPluginId": "vue3", "index": 1, component: Comp1, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_stories-basic-story-vue-ZU2SYabe.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url) },
+  { "id": "stories-chunkstyles-story-vue", "path": ["Chunk styles"], "filePath": "stories/chunkStyles.story.vue", "story": { "id": "stories-chunkstyles-story-vue", "title": "Chunk styles", "layout": { "type": "single", "iframe": true }, "docsOnly": false, "variants": [{ "id": "_default", "title": "default" }] }, "supportPluginId": "vue3", "index": 2, component: Comp2, source: () => __vitePreload(() => import("./__resolved__virtual_story-source_stories-chunkstyles-story-vue-JQ5HLneN.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url) }
 ];
 let tree = [{ "title": "Chunk styles", "index": 2 }, { "title": "Simple", "index": 1 }, { "title": "Toolbar", "index": 0 }];
 const config = { "plugins": [{ "name": "builtin:tailwind-tokens" }, { "name": "builtin:vanilla-support", "supportPlugin": { "id": "vanilla", "moduleName": "/home/runner/work/vue-resources-schedule/vue-resources-schedule/node_modules/histoire/dist/node/builtin-plugins/vanilla-support", "setupFn": "setupVanilla" } }, { "name": "@histoire/plugin-vue", "supportPlugin": { "id": "vue3", "moduleName": "@histoire/plugin-vue", "setupFn": "setupVue3", "importStoriesPrepend": "import { defineAsyncComponent as defineAsyncComponentVue3 } from 'vue'" }, "commands": [{ "id": "histoire:plugin-vue:generate-story", "label": "Generate Vue 3 story from component", "icon": "https://vuejs.org/logo.svg", "searchText": "generate create", "clientSetupFile": "@histoire/plugin-vue/dist/commands/generate-story.client.js" }] }], "outDir": "/home/runner/work/vue-resources-schedule/vue-resources-schedule/doc/dist/stories", "storyMatch": ["**/*.story.vue", "**/*.story.svelte"], "storyIgnored": ["**/node_modules/**", "**/dist/**"], "supportMatch": [{ "id": "vanilla", "patterns": ["**/*.js"], "pluginIds": ["vanilla"] }, { "id": "vue", "patterns": ["**/*.vue"], "pluginIds": ["vue3"] }], "tree": { "file": "title", "order": "asc" }, "theme": { "title": "Histoire", "colors": { "primary": { "50": "#ecfdf5", "100": "#d1fae5", "200": "#a7f3d0", "300": "#6ee7b7", "400": "#34d399", "500": "#10b981", "600": "#059669", "700": "#047857", "800": "#065f46", "900": "#064e3b" }, "gray": { "50": "#fafafa", "100": "#f4f4f5", "200": "#e4e4e7", "300": "#d4d4d8", "400": "#a1a1aa", "500": "#71717a", "600": "#52525b", "700": "#3f3f46", "750": "#323238", "800": "#27272a", "850": "#1f1f21", "900": "#18181b", "950": "#101012" } }, "defaultColorScheme": "auto", "storeColorScheme": true, "darkClass": "dark" }, "responsivePresets": [{ "label": "Mobile (Small)", "width": 320, "height": 560 }, { "label": "Mobile (Medium)", "width": 360, "height": 640 }, { "label": "Mobile (Large)", "width": 414, "height": 896 }, { "label": "Tablet", "width": 768, "height": 1024 }, { "label": "Laptop (Small)", "width": 1024, "height": null }, { "label": "Laptop (Large)", "width": 1366, "height": null }, { "label": "Desktop", "width": 1920, "height": null }, { "label": "4K", "width": 3840, "height": null }], "backgroundPresets": [{ "label": "Transparent", "color": "transparent", "contrastColor": "#333" }, { "label": "White", "color": "#fff", "contrastColor": "#333" }, { "label": "Light gray", "color": "#aaa", "contrastColor": "#000" }, { "label": "Dark gray", "color": "#333", "contrastColor": "#fff" }, { "label": "Black", "color": "#000", "contrastColor": "#eee" }], "sandboxDarkClass": "dark", "routerMode": "hash", "build": { "excludeFromVendorsChunk": [] }, "viteIgnorePlugins": [] };
@@ -72,12 +80,12 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => __vitePreload(() => import("./HomeView.vue-2ac2db6b.js"), true ? ["./HomeView.vue-2ac2db6b.js","./vendor-7a101243.js"] : void 0, import.meta.url)
+      component: () => __vitePreload(() => import("./HomeView.vue-k07Ume5h.js"), true ? __vite__mapDeps([5,2]) : void 0, import.meta.url)
     },
     {
       path: "/story/:storyId",
       name: "story",
-      component: () => __vitePreload(() => import("./StoryView.vue-176c8f6a.js"), true ? ["./StoryView.vue-176c8f6a.js","./vendor-7a101243.js","./MobileOverlay.vue2-6cd98317.js","./BaseEmpty.vue-2c73ea40.js","./state-4bf23366.js"] : void 0, import.meta.url)
+      component: () => __vitePreload(() => import("./StoryView.vue-ZYgSpa4D.js"), true ? __vite__mapDeps([6,2,7,8,9]) : void 0, import.meta.url)
     }
   ]
 });
@@ -167,8 +175,8 @@ function mapVariant(variant, existingVariant) {
   return result;
 }
 const clientSupportPlugins = {
-  "vanilla": () => __vitePreload(() => import("./vendor-7a101243.js").then((n) => n.aO), true ? [] : void 0, import.meta.url),
-  "vue3": () => __vitePreload(() => import("./vendor-7a101243.js").then((n) => n.aP), true ? [] : void 0, import.meta.url)
+  "vanilla": () => __vitePreload(() => import("./vendor-vf2cpMkn.js").then((n) => n.aO), true ? __vite__mapDeps([]) : void 0, import.meta.url),
+  "vue3": () => __vitePreload(() => import("./vendor-vf2cpMkn.js").then((n) => n.aP), true ? __vite__mapDeps([]) : void 0, import.meta.url)
 };
 const __default__ = {
   inheritAttrs: false
@@ -213,3 +221,9 @@ export {
   router as r,
   toggleDark as t
 };
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = ["./Toolbar.story-gTO3Ue1K.js","./TimelineLineRendererTimeChunks-nBVTcPTf.js","./vendor-vf2cpMkn.js","./basic.story-BDmJxtAO.js","./chunkStyles.story-h5SElC4z.js","./HomeView.vue-k07Ume5h.js","./StoryView.vue-ZYgSpa4D.js","./MobileOverlay.vue2-4Jn2F-CB.js","./BaseEmpty.vue-V9SqQkG9.js","./state-9u_NCMB3.js"]
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}

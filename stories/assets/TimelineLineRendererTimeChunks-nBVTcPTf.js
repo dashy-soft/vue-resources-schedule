@@ -1,4 +1,4 @@
-import { aC as dayjs, ar as openBlock, aD as createElementBlock, aq as resolveComponent, aE as renderSlot, av as createBaseVNode, aF as normalizeClass, au as createVNode, aG as Fragment, aH as renderList, aI as createCommentVNode, aJ as normalizeStyle, as as createBlock, aK as Teleport, at as withCtx } from "./vendor-7a101243.js";
+import { aC as dayjs, ar as openBlock, aD as createElementBlock, aq as resolveComponent, aE as renderSlot, av as createBaseVNode, aF as normalizeClass, au as createVNode, aG as Fragment, aH as renderList, aI as createCommentVNode, aJ as normalizeStyle, as as createBlock, aK as Teleport, at as withCtx } from "./vendor-vf2cpMkn.js";
 const HasResizableObserver = {
   data() {
     return {
@@ -17,7 +17,6 @@ const HasResizableObserver = {
     }
   }
 };
-const TimelineRuler_vue_vue_type_style_index_0_scoped_f18a5d5f_lang = "";
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -100,7 +99,6 @@ let s4 = () => {
   return Math.floor((1 + Math.random()) * 65536).toString(16).substring(1);
 };
 const uuidGenerator = () => `${s4()}-${s4()}-${s4()}-${s4()}`;
-const Timeline_vue_vue_type_style_index_0_lang = "";
 const groupBy = (values, keyFinder) => {
   return values.reduce((a, b) => {
     const key = typeof keyFinder === "function" ? keyFinder(b) : b[keyFinder];
@@ -333,7 +331,6 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
 }
 _sfc_main$2.__file = "src/components/Timeline.vue";
 const Timeline = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__file", "/home/runner/work/vue-resources-schedule/vue-resources-schedule/src/components/Timeline.vue"]]);
-const TimelineLineRendererDaysSeparator_vue_vue_type_style_index_0_scoped_42d5c8d3_lang = "";
 const _sfc_main$1 = {
   props: {
     itemProps: {
@@ -390,7 +387,6 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
 }
 _sfc_main$1.__file = "src/components/TimelineLineRendererDaysSeparator.vue";
 const TimelineLineRendererDaysSeparator = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-42d5c8d3"], ["__file", "/home/runner/work/vue-resources-schedule/vue-resources-schedule/src/components/TimelineLineRendererDaysSeparator.vue"]]);
-const TimelineLineRendererTimeChunks_vue_vue_type_style_index_0_scoped_a78e6acc_lang = "";
 function datePourcentageInInterval(date, start, end) {
   if (typeof date === "string") {
     date = dayjs(date);
