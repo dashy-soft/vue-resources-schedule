@@ -1,10 +1,12 @@
 {
   "name": "@dashy-soft/vue-resources-schedule",
+  "type": "module",
   "description": "",
-  "version": "0.0.4-development",
-  "main": "src/index.js",
+  "version": "0.0.5-development",
+  "main": "dist/vue-diagrams.js",
   "files": [
-    "src"
+    "src",
+    "dist/style.css"
   ],
   "author": "Gwenael Pluchon (Dashy-soft)",
   "repository": {
