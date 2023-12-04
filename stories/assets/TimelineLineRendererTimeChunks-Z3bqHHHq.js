@@ -1,4 +1,4 @@
-import { aC as dayjs, ar as openBlock, aD as createElementBlock, aq as resolveComponent, aE as renderSlot, av as createBaseVNode, aF as normalizeClass, au as createVNode, aG as Fragment, aH as renderList, aI as createCommentVNode, aJ as normalizeStyle, as as createBlock, aK as Teleport, at as withCtx } from "./vendor-vf2cpMkn.js";
+import { aC as dayjs, ar as openBlock, aD as createElementBlock, aq as resolveComponent, aE as renderSlot, av as createBaseVNode, aF as normalizeClass, au as createVNode, aG as Fragment, aH as renderList, aI as createCommentVNode, aJ as normalizeStyle, as as createBlock, aK as Teleport, aw as createTextVNode } from "./vendor-vf2cpMkn.js";
 const HasResizableObserver = {
   data() {
     return {
@@ -247,8 +247,8 @@ const _sfc_main$2 = {
 };
 const _hoisted_1$2 = { class: "timeline" };
 const _hoisted_2$1 = { class: "timeline-container" };
-const _hoisted_3 = { class: "sidebar" };
-const _hoisted_4 = /* @__PURE__ */ createBaseVNode(
+const _hoisted_3$1 = { class: "sidebar" };
+const _hoisted_4$1 = /* @__PURE__ */ createBaseVNode(
   "div",
   { class: "ruler-item" },
   null,
@@ -265,8 +265,8 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", _hoisted_1$2, [
     renderSlot(_ctx.$slots, "toolbar"),
     createBaseVNode("div", _hoisted_2$1, [
-      createBaseVNode("div", _hoisted_3, [
-        _hoisted_4,
+      createBaseVNode("div", _hoisted_3$1, [
+        _hoisted_4$1,
         createBaseVNode(
           "div",
           {
@@ -450,34 +450,26 @@ const _sfc_main = {
   }
 };
 const _hoisted_1 = { class: "timeline-line-renderer-time-chunks" };
-const _hoisted_2 = ["onClick"];
+const _hoisted_2 = { class: "tooltip" };
+const _hoisted_3 = ["onClick"];
+const _hoisted_4 = { class: "tooltiptext" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_el_tooltip = resolveComponent("el-tooltip");
   return openBlock(), createElementBlock("div", _hoisted_1, [
     (openBlock(true), createElementBlock(
       Fragment,
       null,
       renderList($options.chunks, (c) => {
-        return openBlock(), createBlock(
-          _component_el_tooltip,
-          null,
-          {
-            content: withCtx(() => [
-              renderSlot(_ctx.$slots, "tooltip", { chunk: c }, void 0, true)
-            ]),
-            default: withCtx(() => [
-              createBaseVNode("div", {
-                class: "chunk",
-                style: normalizeStyle($options.getChunkStyle(c)),
-                onClick: ($event) => _ctx.$emit("click-on-chunk", c)
-              }, null, 12, _hoisted_2)
-            ]),
-            _: 2
-            /* DYNAMIC */
-          },
-          1024
-          /* DYNAMIC_SLOTS */
-        );
+        return openBlock(), createElementBlock("div", _hoisted_2, [
+          createTextVNode("Hover over me "),
+          createBaseVNode("div", {
+            class: "chunk",
+            style: normalizeStyle($options.getChunkStyle(c)),
+            onClick: ($event) => _ctx.$emit("click-on-chunk", c)
+          }, null, 12, _hoisted_3),
+          createBaseVNode("span", _hoisted_4, [
+            renderSlot(_ctx.$slots, "tooltip", { chunk: c }, void 0, true)
+          ])
+        ]);
       }),
       256
       /* UNKEYED_FRAGMENT */
