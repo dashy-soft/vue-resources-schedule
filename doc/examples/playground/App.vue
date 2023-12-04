@@ -30,7 +30,7 @@
 <script>
 import { Timeline, TimelineLineRendererDaysSeparator, TimelineLineRendererTimeChunks } from "@dashy-soft/vue-resources-schedule";
 
-import dayjs from 'https://unpkg.com/dayjs';
+import dayjs from 'https://cdn.skypack.dev/dayjs';
 
 export default {
   components: {

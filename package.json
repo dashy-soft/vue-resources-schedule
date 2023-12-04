@@ -1,9 +1,9 @@
 {
   "name": "@dashy-soft/vue-resources-schedule",
   "type": "module",
-  "description": "",
-  "version": "0.0.5-development",
-  "main": "dist/vue-diagrams.js",
+  "title": "A timeline library for Vue 3",
+  "version": "0.0.7-development",
+  "main": "dist/vue-resources-schedule.js",
   "files": [
     "src",
     "dist/style.css"
