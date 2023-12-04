@@ -3750,9 +3750,8 @@ nuxi@^3.10.0:
   optionalDependencies:
     fsevents "~2.3.3"
 
-"nuxt-quickdoc@https://github.com/gwenaelp/nuxt-quickdoc":
+nuxt-quickdoc@../../nuxt-quickdoc:
   version "1.0.0"
-  resolved "https://github.com/gwenaelp/nuxt-quickdoc#cc6c4a976e75bc4cf3358ad96031125400225840"
   dependencies:
     "@nuxt/kit" "^3.8.2"
     "@vue/repl" "^3.0.0"

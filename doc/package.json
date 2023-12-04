@@ -1,6 +1,5 @@
 {
   "name": "nuxt-app",
-  "private": true,
   "type": "module",
   "scripts": {
     "build": "nuxt build",
@@ -16,6 +15,6 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "nuxt-quickdoc": "https://github.com/gwenaelp/nuxt-quickdoc"
+    "nuxt-quickdoc": "../../nuxt-quickdoc"
   }
 }

@@ -28,7 +28,7 @@
   </Timeline>
 </template>
 <script>
-import Timeline from "vue-resources-schedule/components/Timeline.vue";
+import Timeline from "@dashy-soft/vue-resources-schedule/components/Timeline.vue";
 import TimelineLineRendererDaysSeparator from 'vue-resources-schedule/components/TimelineLineRendererDaysSeparator.vue';
 import TimelineLineRendererTimeChunks from 'vue-resources-schedule/components/TimelineLineRendererTimeChunks.vue';
 import dayjs from 'dayjs';
