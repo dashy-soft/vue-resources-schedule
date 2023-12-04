@@ -28,10 +28,9 @@
   </Timeline>
 </template>
 <script>
-import Timeline from "@dashy-soft/vue-resources-schedule/components/Timeline.vue";
-import TimelineLineRendererDaysSeparator from 'vue-resources-schedule/components/TimelineLineRendererDaysSeparator.vue';
-import TimelineLineRendererTimeChunks from 'vue-resources-schedule/components/TimelineLineRendererTimeChunks.vue';
-import dayjs from 'dayjs';
+import { Timeline, TimelineLineRendererDaysSeparator, TimelineLineRendererTimeChunks } from "@dashy-soft/vue-resources-schedule";
+
+import dayjs from 'https://unpkg.com/dayjs';
 
 export default {
   components: {
